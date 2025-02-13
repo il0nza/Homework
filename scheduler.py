@@ -8,6 +8,7 @@ def start_add_task(week: dict) -> None:
     if choice_day in week:
         task = input(INPUT_TASK_TEXT)
         week[choice_day].append(task)
+        print(CORRECT)
     else:
         print(NO_SEARCH_DAY)
 
@@ -40,7 +41,7 @@ def get_max_len(tasks: list) -> int:
 def print_day(week: dict, day: str) -> None:
     max_len = get_max_len(week[day]) + 2
     print('+', '-' * max_len, '+')
-    print('|', ' ' * (max_len // 2 - 2), day, ' ' * (max_len // 2 - 2), '|')
+    print('|', ' ' * (max_len // 2 - 2 if max_len % 2 == 0 else max_len // 2-1), day, ' ' * (max_len // 2 - 2 if max_len % 2 == 0 else max_len // 2-2), '|')
     print('|', ' ' * max_len, '|')
     for i in range(len(week[day])):
         x = max_len - len(week[day][i])
@@ -52,8 +53,17 @@ def print_day(week: dict, day: str) -> None:
     print('+', '-' * max_len, '+')
 
 
+# вывод заданий на неделю
 def print_week(week: dict) -> None:
-    pass
+    list_day = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс']
+    print('Планы на неделю')
+    for j in week:
+        if len(week[j]) != 0:
+            print_day(week, j)
+        else:
+            print()
+            print(j, ' -- ', 'планов нет')
+            print()
 
 
 def start_remove_task(week: dict) -> None:
