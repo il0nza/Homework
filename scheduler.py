@@ -71,7 +71,7 @@ def print_week(week: dict) -> None:
             print(j, ' -- ', 'планов нет')
             print()
 
-
+# удаление задач
 def start_remove_task(week: dict) -> None:
     print()
     day_del = input(DEL_DAY)
