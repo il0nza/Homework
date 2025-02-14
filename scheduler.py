@@ -37,12 +37,12 @@ def get_max_len(tasks: list) -> int:
                 max_len = len(task)
         return max_len
     else:
-        return False
+        return 0
 
 
 # вывод заданий на день
 def print_day(week: dict, day: str) -> None:
-    if not get_max_len(week[day]):
+    if get_max_len(week[day]) == 0:
         print(NOTHING)
     else:
         max_len = get_max_len(week[day]) + 2
@@ -70,6 +70,7 @@ def print_week(week: dict) -> None:
             print()
             print(j, ' -- ', 'планов нет')
             print()
+
 
 # удаление задач
 def start_remove_task(week: dict) -> None:
